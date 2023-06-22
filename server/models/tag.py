@@ -6,6 +6,8 @@ class Tag(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, unique=True, nullable=False)
 
+    book_tags = db.relationship("BookTag", back_populates="tag", cascade="all, delete-orphan")
+
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, onupdate=db.func.now())
 

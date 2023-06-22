@@ -10,7 +10,7 @@ class User(db.Model, SerializerMixin):
     username = db.Column(db.String, unique=True, nullable=False)
     _password_hash = db.Column(db.String)
 
-    reviews = db.relationship("Review", back_populates="user")
+    reviews = db.relationship("Review", back_populates="user", cascade="all, delete-orphan")
     books = association_proxy("reviews", "book")
 
     created_at = db.Column(db.DateTime, server_default=db.func.now())

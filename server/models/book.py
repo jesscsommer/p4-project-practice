@@ -12,7 +12,9 @@ class Book(db.Model, SerializerMixin):
 
     author_id = db.Column(db.Integer, db.ForeignKey("authors.id"))
     author = db.relationship("Author", back_populates="books")
-    reviews = db.relationship("Review", back_populates="book")
+
+    reviews = db.relationship("Review", back_populates="book", cascade="all, delete-orphan")
+    book_tags = db.relationship("BookTag", back_populates="book", cascade="all, delete-orphan")
 
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, onupdate=db.func.now())
