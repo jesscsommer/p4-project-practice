@@ -1,4 +1,4 @@
-from __init__ import db, validates, SerializerMixin
+from .__init__ import db, validates, SerializerMixin
 
 class Book(db.Model, SerializerMixin):
     __tablename__ = "books"
@@ -18,6 +18,9 @@ class Book(db.Model, SerializerMixin):
 
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, onupdate=db.func.now())
+
+    serialize_only=('id', 'title', 'genre', 'author')
+    serialize_rules=('-reviews.book', '-book_tags.book', '-author.books')
 
     def __repr__(self):
         return (

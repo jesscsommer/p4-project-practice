@@ -46,8 +46,7 @@ with app.app_context():
         book = Book(
             title=fake.sentence(nb_words=3), 
             genre=rc(genres),
-            description=fake.paragraph(),
-            bio=fake.paragraph()
+            description=fake.paragraph()
         )
         book.author = rc(authors)
         books.append(book)
@@ -77,7 +76,7 @@ with app.app_context():
         user = User(
             username=username
         )
-        user.password_hash = user.userame + "password"
+        user.password_hash = user.username + "password"
 
         users.append(user)
 
@@ -111,7 +110,7 @@ with app.app_context():
     db.session.add_all(reviews)
 
     print("Committing to db ...")
-    
+
     db.session.commit()
 
     print("Complete")

@@ -1,4 +1,4 @@
-from __init__ import db, validates, SerializerMixin
+from .__init__ import db, validates, SerializerMixin
 
 class Author(db.Model, SerializerMixin):
     __tablename__ = "authors"

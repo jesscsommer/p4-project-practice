@@ -1,6 +1,6 @@
 from sqlalchemy.ext.hybrid import hybrid_property
 
-from __init__ import db, validates, SerializerMixin, association_proxy
+from .__init__ import db, validates, SerializerMixin, association_proxy
 from config import bcrypt
 
 class User(db.Model, SerializerMixin):
